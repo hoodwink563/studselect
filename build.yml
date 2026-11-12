@@ -1,0 +1,17 @@
+name: Build for macOS
+on: [push]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compile C++
+        run: clang++ main.cpp -o MyApp
+
+      - name: Upload App
+        uses: actions/upload-artifact@v4
+        with:
+          name: MyApp-macOS
+          path: MyApp
